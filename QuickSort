@@ -1,0 +1,37 @@
+class Solution {
+    static void quickSort(int arr[], int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(arr, low, high); // Get pivot index
+            quickSort(arr, low, pivotIndex - 1); // Sort left subarray
+            quickSort(arr, pivotIndex + 1, high); // Sort right subarray
+        }
+    }
+    static int partition(int arr[], int low, int high) {
+        int pivot = arr[low]; // Select the pivot element
+        int start = low;
+        int end = high;
+
+        while (start < end) {
+           
+            while (start <= high && arr[start] <= pivot) {
+                start++;
+            }
+            
+            while (end >= low && arr[end] > pivot) {
+                end--;
+            }
+            if (start < end) {
+                
+                int temp = arr[start];
+                arr[start] = arr[end];
+                arr[end] = temp;
+            }
+        }
+     
+        int temp = arr[low];
+        arr[low] = arr[end];
+        arr[end] = temp;
+
+        return end; 
+    }
+}
