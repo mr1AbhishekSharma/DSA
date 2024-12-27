@@ -1,0 +1,39 @@
+class Solution {
+    
+    void mergeSort(int arr[], int l, int r) {
+    int lb=l;
+    int ub=r;
+        if(lb<ub){
+            int mid=(ub+lb)/2;
+            mergeSort(arr,lb,mid);
+            mergeSort(arr,mid+1,ub);
+            merge(arr,l,mid,ub);
+        }
+        
+}
+void merge(int arr[],int l,int mid,int r){
+        int B[]=new int[r-l+1];
+        int i=l;
+        int j=mid+1;
+        int k=0;
+        while(i<=mid && j<=r){
+            if(arr[i]<arr[j]){
+                B[k++]=arr[i++];
+            }
+            else{
+                B[k++]=arr[j++];
+            }
+        }
+        if(i>mid){
+            while(j<=r){
+                 B[k++]=arr[j++];
+            }
+        }
+        if(j>r){
+            while(i<=mid){
+                 B[k++]=arr[i++];
+            }
+        }
+        System.arraycopy(B, 0, arr, l, B.length);
+    }
+}
