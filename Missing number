@@ -1,0 +1,24 @@
+class Solution {
+    public int missingNumber(int[] nums) {
+        int length=nums.length;
+        int missing=0;
+        for(length=nums.length;length>=0;length--){
+            for(int i=0;i<nums.length;i++){
+                if(length==nums[i]){
+                    break;
+                }
+                else{
+                    if(i==nums.length-1){
+                        missing=length;
+                    }
+                    else{
+                         continue;
+                    }
+                   
+                }
+            }
+
+        }
+        return missing;
+    }
+}
