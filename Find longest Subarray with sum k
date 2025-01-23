@@ -1,0 +1,24 @@
+class Solution {
+    public int longestSubarray(int[] arr, int k) {
+        int currsum=0;
+        int length=0;
+        
+        HashMap<Integer,Integer> map=new HashMap<>();
+        
+        for(int i=0;i<arr.length;i++){
+           currsum+=arr[i];
+           
+           if(currsum==k){
+               length=i+1;
+           }
+           if(map.containsKey(currsum-k)){
+                length = Math.max(length, i - map.get(currsum - k));
+           }
+           if (!map.containsKey(currsum)) {
+                map.put(currsum, i);
+            }
+    }
+    return length;
+   
+}
+}
